@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Cohere Response";
+}
+
+<h1>Usable Tables:</h1>
+<ul>
+    @foreach (var table in ViewBag.UsableTables)
+    {
+        <li>@table</li>
+    }
+</ul>
+
+<h1>Users Table:</h1>
+<ul>
+    @foreach (var user in ViewBag.UsersTable)
+    {
+        <li>@user</li>
+    }
+</ul>
+
+<h1>Response from Cohere:</h1>
+<pre>@ViewBag.CohereResponse</pre>

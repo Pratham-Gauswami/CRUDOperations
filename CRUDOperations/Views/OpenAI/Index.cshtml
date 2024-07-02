@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "Chatbot Interaction";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <form id="chatForm" method="post" action="CompleteSentence">
+        <div class="form-group">
+            <label for="textInput">Enter your sentence:</label>
+            <input type="text" class="form-control" id="textInput" name="text" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div id="responseSection" style="margin-top: 20px;">
+        <h4>Response:</h4>
+        <div id="responseText"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('chatForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            const response = await fetch('/OpenAI/CompleteSentence', {
+                method: 'POST',
+                body: formData
+            });
+            
+             if (response.ok) {
+                const result = await response.json(); // Parse JSON response
+                document.getElementById('responseText').innerText = result; // Assuming result is a string
+            } else {
+                document.getElementById('responseText').innerText = 'Error: ' + response.statusText;
+            }
+        });
+    </script>
+}

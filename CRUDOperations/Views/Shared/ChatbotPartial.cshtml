@@ -1,0 +1,19 @@
+<!-- Views/Shared/ChatbotPartial.cshtml -->
+
+<div id="chatbox">
+    <div id="messages"></div>
+    <input type="text" id="userInput" />
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function sendMessage() {
+        var userInput = $('#userInput').val();
+        $.post('@Url.Action("GetResponse", "Chatbot", new { area = "" })', { userInput: userInput }, function(data) {
+            $('#messages').append('<div>User: ' + userInput + '</div>');
+            $('#messages').append('<div>Bot: ' + data.response + '</div>');
+            $('#userInput').val('');
+        });
+    }
+</script>

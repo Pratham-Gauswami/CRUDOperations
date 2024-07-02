@@ -1,0 +1,34 @@
+@model UsersEntity
+
+@{
+    ViewData["Title"] = "Create User";
+}
+
+<h2>Create User</h2>
+
+<form asp-action="CreateUser" asp-controller="Asset" method="post">
+    <div class="form-group">
+        <label asp-for="user_id" class="control-label"></label>
+        <input asp-for="user_id" class="form-control" />
+        <span asp-validation-for="user_id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="username" class="control-label"></label>
+        <input asp-for="username" class="form-control" />
+        <span asp-validation-for="username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="email" class="control-label"></label>
+        <input asp-for="email" class="form-control" />
+        <span asp-validation-for="email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="password" class="control-label"></label>
+        <input asp-for="password" class="form-control" type="password" />
+        <span asp-validation-for="password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" asp-controller="Asset" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>

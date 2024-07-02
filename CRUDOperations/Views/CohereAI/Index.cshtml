@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Cohere Chat";
+}
+
+<h2>Cohere Chat</h2>
+
+<form asp-action="GetCohereResponse" method="post">
+    <div class="form-group">
+        <label for="message">Message:</label>
+        <input type="text" class="form-control" id="message" name="message" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
+
+@if (ViewBag.Response != null)
+{
+    <h3>Response:</h3>
+    <pre>@ViewBag.Response</pre>
+}
+@if (ViewBag.Error != null)
+{
+    <h3>Error:</h3>
+    <pre>@ViewBag.Error</pre>
+}

@@ -1,0 +1,45 @@
+@model UsersEntity
+
+@{
+    ViewBag.Title = "Update Users";
+}
+
+<h2>Edit Person</h2>
+
+@using (Html.BeginForm("UpdateDetails", "Asset", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.user_id)
+
+    @* <div class="form-group">
+        @Html.LabelFor(model => model.user_id, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.user_id, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.user_id, "", new { @class = "text-danger" })
+    </div> *@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label" })
+        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

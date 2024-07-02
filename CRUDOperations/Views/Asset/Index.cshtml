@@ -1,0 +1,58 @@
+@model List<UsersEntity>
+
+@{
+    ViewData["Title"] = "User";
+    @* var Asset = ViewBag.User as List<UsersEntity>;
+ANOTHER WAY TO DO IT IS TO MAKE A VIEWBAG AND GET THESE VALUES DYNAMICALLY*@
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Table</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Users Table</h2>
+        <p>
+            <a asp-action="Create" asp-controller="Asset" class="btn btn-primary">Create New User</a>
+        </p>
+        </p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* This is where the rows will be dynamically inserted from the backend *@
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.user_id</td>
+                        <td>@item.username</td>
+                        <td>@item.email</td>
+                        <td>@item.password</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Asset" class="btn btn-warning">Edit</a>
+                            <a href="/details/@item.user_id" class="btn btn-sm btn-info">Details</a>
+                            <a href="/delete/@item.user_id" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
